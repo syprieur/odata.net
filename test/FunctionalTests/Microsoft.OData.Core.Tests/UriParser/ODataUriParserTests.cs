@@ -1181,6 +1181,7 @@ namespace Microsoft.OData.Tests.UriParser
         [InlineData("/root:/abc:", "/root/NS.ComposableFunction(arg='abc')")]
         [InlineData("/root:/photos:February:", "/root/NS.ComposableFunction(arg='photos:February')")]
         [InlineData("/root:/photos/2018/February:", "/root/NS.ComposableFunction(arg='photos%2f2018%2fFebruary')")]
+        [InlineData("/root:/photos/2018/February", "/root/NS.ComposableFunction(arg='photos%2f2018%2fFebruary')")]
         [InlineData("/root:/photos/2018//////February:", "/root/NS.ComposableFunction(arg='photos%2f2018%2f%2f%2f%2f%2f%2fFebruary')")]
         [InlineData("/root:/photos%2F2018%2F/:February:", "/root/NS.ComposableFunction(arg='photos%2F2018%2F%2f:February')")]
         public void ParseComposableEscapeFunctionUrlReturnsTheSameODataPath(string escapePathString, string normalPathString)
@@ -1210,6 +1211,7 @@ namespace Microsoft.OData.Tests.UriParser
         [InlineData("/root/items/32:/abc:", "/root/items/32/NS.ComposableFunction(arg='abc')")]
         [InlineData("/root/items/32:/photos:February:", "/root/items/32/NS.ComposableFunction(arg='photos:February')")]
         [InlineData("/root/items/32:/photos/2018/February:", "/root/items/32/NS.ComposableFunction(arg='photos%2f2018%2fFebruary')")]
+        [InlineData("/root/items/32:/photos/2018/February", "/root/items/32/NS.ComposableFunction(arg='photos%2f2018%2fFebruary')")]
         [InlineData("/root/items/32:/photos/2018//////February:", "/root/items/32/NS.ComposableFunction(arg='photos%2f2018%2f%2f%2f%2f%2f%2fFebruary')")]
         [InlineData("/root/items/32:/photos%2F2018%2F/:February:", "/root/items/32/NS.ComposableFunction(arg='photos%2F2018%2F%2f:February')")]
         public void ParseComposableEscapeFunctionUrlReturnsTheSameODataPathForContainedNavigation(string escapePathString, string normalPathString)

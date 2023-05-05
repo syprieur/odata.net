@@ -1184,7 +1184,7 @@ namespace Microsoft.OData.UriParser
             /*
              * For Non-KeyAsSegment, try to handle it as a key property value, unless it was preceded by an escape - marker segment('$').
              * For KeyAsSegment, the following precedence rules should be supported[ODATA - 799]:
-             * Try to match an OData segment(starting with “$”).
+             * Try to match an OData segment(starting with Â“$Â”).
              *   - Note: $filter path segment is a special case that has the format "$filter(@a)", where @a represents an alias.
              * Try to match an alias - qualified bound action name, bound function overload, or type name.
              * Try to match a namespace-qualified bound action name, bound function overload, or type name.
@@ -1825,8 +1825,8 @@ namespace Microsoft.OData.UriParser
             IEdmFunction bestCandidate = null;
             foreach (IEdmFunction f in candidates)
             {
-                // If the composability of the above found function does not match, we cannot use the function
-                if (f.IsComposable != isComposable)
+                // If a composable function is required, the candidate must be composable. Otherwise, composability does not matter.
+                if (isComposable && !f.IsComposable)
                 {
                     continue;
                 }
